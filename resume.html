@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме — Облог Евгений Алексеевич</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 8px solid #ff8a65;
+        }
+        .header {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .photo-container {
+            flex-shrink: 0;
+        }
+        .photo-placeholder {
+            width: 150px;
+            height: 180px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-radius: 4px;
+        }
+        .main-info {
+            flex-grow: 1;
+        }
+        h1 {
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            color: #222;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #00acc1;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ff8a65;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        .contacts {
+            list-style: none;
+            font-size: 14px;
+        }
+        .contacts li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-divider {
+            border: none;
+            height: 1px;
+            background-color: #00acc1;
+            margin: 25px 0;
+        }
+        .grid-table {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            row-gap: 12px;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .label {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #555;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+        .value {
+            color: #333;
+        }
+        h2 {
+            font-size: 16px;
+            text-transform: uppercase;
+            color: #222;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 1px;
+        }
+        .section-icon {
+            color: #ff8a65;
+            font-weight: bold;
+        }
+        .about-text {
+            grid-column: 1 / -1;
+            margin-top: 5px;
+            white-space: pre-line;
+        }
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .grid-table {
+                grid-template-columns: 1fr;
+                row-gap: 5px;
+            }
+            .label {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="resume-container">
+    <!-- Шапка резюме -->
+    <div class="header">
+        <div class="photo-container">
+            <!-- Замените 'your-photo.jpg' на имя файла вашей фотографии, если добавите её в репозиторий -->
+            <img src="resume_photo.jpg" alt="Фото" style="width: 150px; height: 180px; object-fit: cover; border-radius: 4px;">
+        </div>
+        <div class="main-info">
+            <h1>Облог Евгений Алексеевич</h1>
+            <div class="subtitle">Android разработчик, Unity (C#) разработчик</div>
+            <ul class="contacts">
+                <li>📞 +7 (928) 936-21-22</li>
+                <li>✉️ jj3ka@yandex.ru</li>
+                <li>📍 Краснодар, Не готов к переезду</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Основные условия -->
+    <div class="grid-table">
+        <div class="label">Желаемая зарплата</div>
+        <div class="value">От 10 000 ₽</div>
+        
+        <div class="label">График работы</div>
+        <div class="value">Гибкий график</div>
+        
+        <div class="label">Готовность к командировкам</div>
+        <div class="value">Не готов</div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Блок "Обо мне" -->
+    <h2><span class="section-icon">👤</span> Обо мне</h2>
+    <div class="grid-table">
+        <div class="label">Дата рождения</div>
+        <div class="value">5 апреля 2007</div>
+        
+        <div class="label">Гражданство</div>
+        <div class="value">Россия</div>
+        
+        
+        <div class="label">Семейное положение</div>
+        <div class="value">Не женат</div>
+        
+        <div class="label">Образование</div>
+        <div class="value">Среднее</div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Дополнительная информация -->
+    <h2><span class="section-icon">📄</span> Дополнительная информация</h2>
+    <div class="grid-table">
+        <div class="label">Владение иностранными языками</div>
+        <div class="value">английский (B2)</div>
+        
+        <div class="label">Водительские права, категории</div>
+        <div class="value">B, M</div>
+        
+        <div class="label">Личные качества</div>
+        <div class="value">Отзывчивость, чуткость, исполнительность</div>
+        
+        <div class="label">О себе</div>
+        <div class="value about-text">Я программист с небольшим опытом разработки различных проектов. Могу разрабатывать: игры на движке Unity, мобильные приложения на языке Kotlin (Android), небольшие проекты на Python и C#. Очень быстро учусь и стараюсь делать всё, что в моих силах.</div>
+    </div>
+</div>
+
+</body>
+</html>
