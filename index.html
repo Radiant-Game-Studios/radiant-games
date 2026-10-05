@@ -1,525 +1,927 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radiant Games | Portfolio</title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <!-- Подключаем современные шрифты -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome для иконок -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radiant Games | Portfolio</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0f;
-            color: #e0e0e0;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        /* Анимированный фон с частицами и градиентами */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 50%, rgba(120, 50, 180, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(40, 150, 200, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(180, 50, 100, 0.1) 0%, transparent 50%);
-            z-index: -2;
-            pointer-events: none;
-        }
+<style>
+:root{
+    --gb-shell-1:#dedcc5;
+    --gb-shell-2:#b9b79f;
+    --gb-shell-3:#9d9b84;
+    --gb-shell-shadow:#6b6957;
+    --gb-screen:#9bbc0f;
+    --gb-screen-dark:#8bac0f;
+    --gb-ink:#0f380f;
+    --gb-ink-2:#306230;
+    --gb-btn-1:#b9316a;
+    --gb-btn-2:#8a1c4a;
+    --gb-btn-shadow:#5e1033;
+    --gb-a:#a01850;
+    --gb-b:#6d0f38;
+    --bg:#14130f;
+}
 
-        /* Фоновое изображение с наложением */
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("https://avatanplus.com/files/resources/original/5831d3e6f101f15882a3be4b.jpg") center/cover no-repeat;
-            opacity: 0.08;
-            z-index: -1;
-            pointer-events: none;
-            filter: blur(1px) saturate(0.5);
-        }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-        /* Анимированные линии на фоне */
-        .bg-lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            opacity: 0.04;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 40px,
-                rgba(255, 255, 255, 0.5) 40px,
-                rgba(255, 255, 255, 0.5) 41px
-            );
-        }
+html{scroll-behavior:smooth;}
 
-        /* Стеклянный хедер */
-        header {
-            padding: 1.5em 3em;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1em;
-            background: rgba(20, 15, 30, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-        }
+body{
+    font-family:'VT323','Courier New',monospace;
+    font-size:1.25rem;
+    line-height:1.4;
+    background:var(--bg);
+    color:#d8d6c0;
+    min-height:100vh;
+    overflow-x:hidden;
+}
 
-        #logo {
-            display: flex;
-            align-items: center;
-            transition: transform 0.3s ease;
-        }
+/* ---------- ФОН ---------- */
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image:
+        radial-gradient(circle at 50% -10%, rgba(155,188,15,.12), transparent 55%),
+        radial-gradient(circle, rgba(155,188,15,.07) 1px, transparent 1.5px);
+    background-size:100% 100%, 22px 22px;
+    pointer-events:none;
+    z-index:0;
+}
 
-        #logo:hover {
-            transform: scale(1.05);
-        }
+/* ---------- ХЕДЕР (корпус консоли) ---------- */
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:1rem;
+    padding:.85rem 1.6rem;
+    background:linear-gradient(#e6e4cd 0%, #c9c7b0 45%, #a8a68e 100%);
+    border-bottom:4px solid var(--gb-shell-shadow);
+    box-shadow:
+        0 10px 26px rgba(0,0,0,.55),
+        inset 0 2px 0 rgba(255,255,255,.8),
+        inset 0 -3px 0 rgba(0,0,0,.1);
+    color:#2a2a20;
+    overflow:hidden;
+}
 
-        #logo img {
-            height: 45px;
-            filter: drop-shadow(0 0 15px rgba(180, 100, 255, 0.5));
-            transition: filter 0.3s ease;
-        }
+/* декоративные вертикальные полосы по краям, как на корпусе консоли */
+.topbar::before,
+.topbar::after{
+    content:'';
+    position:absolute;
+    top:0;bottom:0;
+    width:14px;
+    background:
+        repeating-linear-gradient(90deg,
+            rgba(255,255,255,.35) 0 2px,
+            transparent 2px 4px);
+    opacity:.5;
+    pointer-events:none;
+}
+.topbar::before{left:0;}
+.topbar::after{right:0;}
 
-        #logo:hover img {
-            filter: drop-shadow(0 0 25px rgba(200, 130, 255, 0.8));
-        }
+/* ЛЕВО: логотип-бейдж */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:.85rem;
+    padding:.35rem .9rem .35rem .4rem;
+    background:linear-gradient(#2c2c22, #14130f);
+    border-radius:10px;
+    box-shadow:
+        inset 0 0 0 2px #4a4a3c,
+        inset 0 2px 0 rgba(255,255,255,.1),
+        0 3px 0 #0a0a06,
+        0 6px 12px rgba(0,0,0,.4);
+    transform:skewX(-3deg);
+    transition:transform .25s ease, box-shadow .25s ease;
+}
+.logo:hover{
+    transform:skewX(-3deg) translateY(-2px);
+    box-shadow:
+        inset 0 0 0 2px #6a6a54,
+        inset 0 2px 0 rgba(255,255,255,.15),
+        0 5px 0 #0a0a06,
+        0 10px 18px rgba(0,0,0,.5);
+}
 
-        header nav {
-            display: flex;
-            gap: 1.5em;
-            align-items: center;
-        }
+.logo img{
+    height:42px;
+    display:block;
+    transform:skewX(3deg);
+    filter:drop-shadow(0 0 6px rgba(155,188,15,.35));
+}
 
-        header nav a {
-            color: #d0c0e0;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            padding: 0.6em 1.4em;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5em;
-            letter-spacing: 0.3px;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
+/* ПРАВАЯ ЗОНА */
+.topbar-right{
+    display:flex;
+    align-items:center;
+    gap:1.3rem;
+}
 
-        header nav a:hover {
-            background: rgba(130, 80, 200, 0.25);
-            border-color: rgba(160, 100, 240, 0.5);
-            color: #ffffff;
-            box-shadow: 0 0 25px rgba(140, 80, 220, 0.4);
-            transform: translateY(-2px);
-        }
+/* декоративные кнопки A/B как на геймбое */
+.gb-buttons{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    transform:rotate(-18deg);
+    padding:.2rem .4rem;
+    user-select:none;
+}
 
-        /* Основной контент */
-        #content {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 3em 2em 4em;
-        }
+.gb-btn{
+    width:32px;height:32px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Press Start 2P',monospace;
+    font-size:.55rem;
+    color:#ffe6f0;
+    text-shadow:0 1px 0 rgba(0,0,0,.6);
+    box-shadow:
+        inset 0 -3px 4px rgba(0,0,0,.5),
+        inset 0 3px 2px rgba(255,255,255,.25),
+        0 3px 0 rgba(0,0,0,.35);
+    cursor:default;
+    transition:transform .15s ease;
+}
+.gb-btn.a{
+    background:radial-gradient(circle at 35% 30%, #c62d6f, var(--gb-a) 65%, #6d0f38);
+}
+.gb-btn.b{
+    background:radial-gradient(circle at 35% 30%, #8f1c50, var(--gb-b) 65%, #4a0a26);
+    transform:translateY(10px);
+}
+.gb-btn:hover{transform:scale(1.08);}
+.gb-btn.b:hover{transform:translateY(10px) scale(1.08);}
 
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 0.3em;
-            background: linear-gradient(135deg, #e0c0ff, #8090ff, #c080e0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
-            text-shadow: none;
-            position: relative;
-        }
+/* мини-крестовина D-Pad */
+.gb-dpad{
+    width:52px;height:52px;
+    position:relative;
+    margin-right:.5rem;
+    user-select:none;
+}
+.gb-dpad span{
+    position:absolute;
+    background:linear-gradient(#3a3a2c, #1e1e16);
+    border-radius:3px;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 2px 0 #0a0a06,
+        0 3px 6px rgba(0,0,0,.4);
+}
+.gb-dpad .up   {left:18px;top:0;   width:16px;height:20px;}
+.gb-dpad .down {left:18px;bottom:0;width:16px;height:20px;}
+.gb-dpad .left {left:0;  top:18px;width:20px;height:16px;}
+.gb-dpad .right{right:0; top:18px;width:20px;height:16px;}
+.gb-dpad .mid  {
+    left:18px;top:18px;width:16px;height:16px;
+    background:linear-gradient(#2a2a20, #14130f);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 1px 0 #0a0a06;
+}
 
-        .subtitle {
-            text-align: center;
-            color: #9080b0;
-            font-size: 1.1rem;
-            margin-bottom: 3.5em;
-            letter-spacing: 1.5px;
-            font-weight: 400;
-            text-transform: uppercase;
-        }
+/* динамик (спикер) */
+.gb-speaker{
+    width:60px;height:44px;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    grid-template-rows:repeat(4,1fr);
+    gap:4px;
+    padding:4px;
+    transform:rotate(-18deg);
+    user-select:none;
+}
+.gb-speaker i{
+    display:block;
+    background:
+        radial-gradient(circle at 35% 35%, #4a4a3c, #1e1e16 70%);
+    border-radius:50%;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+}
 
-        /* Сетка проектов */
-        .projects-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 2em;
-        }
+/* КНОПКА TELEGRAM */
+.top-btn{
+    font-family:'Press Start 2P',monospace;
+    font-size:.5rem;
+    letter-spacing:.5px;
+    color:#ffe6f0;
+    text-decoration:none;
+    background:linear-gradient(var(--gb-btn-1),var(--gb-btn-2));
+    padding:.9em 1.4em;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    gap:.6em;
+    box-shadow:0 5px 0 var(--gb-btn-shadow), 0 10px 16px rgba(0,0,0,.4);
+    transition:transform .12s, box-shadow .12s, filter .2s;
+    position:relative;
+}
+.top-btn::after{
+    content:'';
+    position:absolute;
+    top:6px;left:14px;
+    width:60%;
+    height:30%;
+    background:linear-gradient(to bottom, rgba(255,255,255,.35), transparent);
+    border-radius:999px;
+    pointer-events:none;
+}
+.top-btn:hover{filter:brightness(1.12);}
+.top-btn:active{transform:translateY(5px);box-shadow:0 0 0 var(--gb-btn-shadow);}
 
-        /* Карточка игры */
-        .game {
-            background: rgba(25, 20, 40, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px;
-            padding: 2em;
-            display: flex;
-            gap: 2em;
-            align-items: flex-start;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
+/* ---------- КОНТЕНТ ---------- */
+main{
+    position:relative;
+    z-index:1;
+    max-width:1120px;
+    margin:0 auto;
+    padding:3rem 1.6rem 5rem;
+}
 
-        .game::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(120, 60, 200, 0.08), rgba(40, 120, 200, 0.04));
-            z-index: 0;
-            pointer-events: none;
-            border-radius: 24px;
-        }
+h1{
+    font-family:'Press Start 2P',monospace;
+    font-size:clamp(1.05rem,3.1vw,1.8rem);
+    text-align:center;
+    color:var(--gb-screen);
+    letter-spacing:2px;
+    line-height:1.6;
+    text-shadow:0 4px 0 #3d4a08, 0 7px 14px rgba(0,0,0,.7);
+}
 
-        .game:hover {
-            transform: translateY(-5px) scale(1.01);
-            border-color: rgba(160, 100, 240, 0.3);
-            box-shadow: 0 20px 50px rgba(100, 50, 180, 0.3), 0 0 0 1px rgba(160, 120, 240, 0.2);
-        }
+.subtitle{
+    text-align:center;
+    color:#7f8a4a;
+    font-size:1.15rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin:1.1rem 0 3rem;
+}
 
-        .game-preview {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 16px;
-            flex-shrink: 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            transition: all 0.4s ease;
-            border: 2px solid rgba(255, 255, 255, 0.08);
-            z-index: 1;
-            filter: brightness(0.9) saturate(1.1);
-        }
+/* ---------- СЕТКА КАРТРИДЖЕЙ ---------- */
+.cart-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(190px, 1fr));
+    gap:2.4rem 1.6rem;
+}
 
-        .game:hover .game-preview {
-            transform: scale(1.03);
-            border-color: rgba(200, 150, 255, 0.4);
-            box-shadow: 0 15px 35px rgba(120, 40, 200, 0.5);
-            filter: brightness(1) saturate(1.2);
-        }
+.cart{
+    position:relative;
+    padding:26px 14px 12px;
+    border-radius:10px 10px 6px 6px;
+    background:linear-gradient(160deg, var(--gb-shell-1) 0%, var(--gb-shell-2) 45%, var(--gb-shell-3) 100%);
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.75),
+        inset 2px 0 0 rgba(255,255,255,.35),
+        inset -2px 0 0 rgba(0,0,0,.15),
+        0 8px 0 var(--gb-shell-shadow),
+        0 14px 26px rgba(0,0,0,.55);
+    cursor:pointer;
+    outline:none;
+    transition:transform .2s cubic-bezier(.2,.9,.3,1.4), box-shadow .2s, filter .2s;
+    animation:cartIn .45s both;
+}
 
-        .game-info {
-            flex: 1;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8em;
-        }
+@keyframes cartIn{
+    from{opacity:0;transform:translateY(24px) scale(.96);}
+    to{opacity:1;transform:none;}
+}
 
-        .game h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #f0e0ff;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.2em;
-            background: linear-gradient(to right, #fff, #d0b0ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+.cart::before{
+    content:'';
+    position:absolute;
+    top:0;left:50%;
+    transform:translateX(-50%);
+    width:70px;height:14px;
+    background:linear-gradient(#b0ae96,#cbc9b2);
+    border-radius:0 0 10px 10px;
+    box-shadow:inset 0 -3px 4px rgba(0,0,0,.25);
+}
 
-        .game p {
-            color: #b0a0c0;
-            line-height: 1.7;
-            font-size: 1rem;
-            font-weight: 400;
-        }
+.cart::after{
+    content:'';
+    position:absolute;
+    left:5px;top:44px;bottom:46px;
+    width:5px;
+    border-radius:3px;
+    background:repeating-linear-gradient(0deg, transparent 0 4px, rgba(0,0,0,.13) 4px 6px);
+    opacity:.7;
+    pointer-events:none;
+}
 
-        .download-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8em;
-            margin-top: 0.8em;
-        }
+.cart:hover,
+.cart:focus-visible{
+    transform:translateY(-8px) rotate(-1deg);
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.75),
+        0 14px 0 var(--gb-shell-shadow),
+        0 26px 40px rgba(0,0,0,.65),
+        0 0 26px rgba(155,188,15,.25);
+}
 
-        .download-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5em;
-            padding: 0.7em 1.5em;
-            background: rgba(130, 70, 200, 0.2);
-            border: 1px solid rgba(160, 120, 240, 0.3);
-            color: #e0d0ff;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            letter-spacing: 0.3px;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
+.cart-label{
+    position:relative;
+    aspect-ratio:1 / 1.05;
+    border-radius:6px 6px 4px 4px;
+    overflow:hidden;
+    background:#0f380f;
+    box-shadow:inset 0 0 0 3px #f2f0dc, 0 2px 6px rgba(0,0,0,.35);
+}
 
-        .download-link i {
-            font-size: 0.9rem;
-            color: #b090e0;
-            transition: color 0.3s ease;
-        }
+.cart-label img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:contrast(1.05) saturate(.95);
+    transition:transform .35s ease;
+}
 
-        .download-link:hover {
-            background: rgba(150, 80, 230, 0.4);
-            border-color: rgba(190, 140, 255, 0.7);
-            color: #ffffff;
-            box-shadow: 0 0 20px rgba(140, 80, 220, 0.5);
-            transform: translateY(-2px);
-        }
+.cart:hover .cart-label img{transform:scale(1.07);}
 
-        .download-link:hover i {
-            color: #ffffff;
-        }
+.cart-label-title{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    padding:28px 8px 8px;
+    font-family:'Press Start 2P',monospace;
+    font-size:.48rem;
+    line-height:1.7;
+    letter-spacing:.5px;
+    text-align:center;
+    color:#eaf5b0;
+    word-break:break-word;
+    background:linear-gradient(to top, rgba(15,56,15,.96), rgba(15,56,15,.72) 55%, transparent);
+    text-shadow:0 2px 0 #0a2408;
+}
 
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            header {
-                padding: 1em 1.5em;
-                justify-content: center;
-                text-align: center;
-            }
+.cart-foot{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:10px;
+    padding:0 2px;
+    font-family:'Press Start 2P',monospace;
+    font-size:.4rem;
+    letter-spacing:.5px;
+    color:#5c5a49;
+}
 
-            #logo img {
-                height: 35px;
-            }
+/* ---------- ОШИБКА ЗАГРУЗКИ ---------- */
+.load-error{
+    grid-column:1 / -1;
+    text-align:center;
+    padding:2.5rem 1.5rem;
+    border:3px dashed #4d4b3c;
+    border-radius:12px;
+    color:#b6b49d;
+    font-size:1.15rem;
+    line-height:1.6;
+}
+.load-error code{
+    display:inline-block;
+    margin:.8rem 0;
+    padding:.5em 1em;
+    background:#0f380f;
+    color:#9bbc0f;
+    border-radius:6px;
+    font-size:1.1rem;
+}
+.load-error p + p{margin-top:.5rem;}
 
-            header nav a {
-                font-size: 0.85rem;
-                padding: 0.5em 1em;
-            }
+/* ---------- МОДАЛКА ---------- */
+.overlay{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:1.5rem 1rem;
+    overflow-y:auto;
+    background:rgba(8,8,5,.86);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s, visibility .25s;
+}
+.overlay.open{opacity:1;visibility:visible;}
 
-            h1 {
-                font-size: 2.2rem;
-            }
+.modal{
+    position:relative;
+    width:min(900px,100%);
+    margin:auto;
+    padding:1.7rem 1.6rem 1.9rem;
+    background:linear-gradient(160deg,#dcdac3 0%, #b8b69f 50%, #a09e87 100%);
+    border-radius:16px 16px 70px 16px;
+    box-shadow:
+        0 12px 0 var(--gb-shell-shadow),
+        0 30px 70px rgba(0,0,0,.75),
+        inset 0 2px 0 rgba(255,255,255,.75);
+    transform:translateY(26px) scale(.96);
+    opacity:0;
+    transition:transform .3s cubic-bezier(.2,.9,.3,1.3), opacity .25s;
+}
+.overlay.open .modal{transform:none;opacity:1;}
 
-            .game {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 1.5em;
-            }
+.close{
+    position:absolute;
+    top:14px;right:16px;
+    width:40px;height:40px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    z-index:5;
+    font-size:1rem;
+    color:#d8d6c0;
+    background:linear-gradient(#4a4a3c,#2c2c22);
+    box-shadow:0 3px 0 #141410, inset 0 1px 0 rgba(255,255,255,.2);
+    transition:transform .12s, box-shadow .12s;
+}
+.close:active{transform:translateY(3px);box-shadow:none;}
 
-            .game-preview {
-                width: 160px;
-                height: 160px;
-                margin-bottom: 1em;
-            }
+.screen-bezel{
+    position:relative;
+    padding:18px 18px 28px;
+    border-radius:12px 12px 30px 12px;
+    background:linear-gradient(#4a4940,#35342c);
+    box-shadow:
+        inset 0 4px 10px rgba(0,0,0,.7),
+        inset 0 -2px 0 rgba(255,255,255,.12),
+        0 2px 0 rgba(255,255,255,.45);
+}
 
-            .download-links {
-                justify-content: center;
-            }
-        }
+.bezel-text{
+    position:absolute;
+    left:0;right:0;bottom:8px;
+    text-align:center;
+    font-family:'Press Start 2P',monospace;
+    font-size:.36rem;
+    letter-spacing:1px;
+    color:#8d8b79;
+}
 
-        @media (max-width: 480px) {
-            #content {
-                padding: 1.5em 1em;
-            }
+.screen{
+    position:relative;
+    min-height:280px;
+    padding:12px;
+    border-radius:6px 6px 18px 6px;
+    background:var(--gb-screen);
+    box-shadow:inset 0 0 34px rgba(15,56,15,.4);
+    overflow:hidden;
+}
 
-            h1 {
-                font-size: 1.8rem;
-            }
+.screen::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:
+        repeating-linear-gradient(0deg, rgba(15,56,15,.09) 0 2px, transparent 2px 4px),
+        radial-gradient(circle at 50% 50%, transparent 55%, rgba(15,56,15,.2));
+    mix-blend-mode:multiply;
+}
 
-            .game h2 {
-                font-size: 1.4rem;
-            }
+.screen.boot{animation:boot .45s ease-out;}
+@keyframes boot{
+    0%{opacity:0;transform:scaleY(.02);}
+    30%{opacity:1;transform:scaleY(.02);}
+    60%{opacity:.35;transform:scaleY(1);}
+    100%{opacity:1;}
+}
 
-            .game-preview {
-                width: 130px;
-                height: 130px;
-            }
-        }
+.shot-main{
+    width:100%;
+    aspect-ratio:16 / 9;
+    border:3px solid var(--gb-ink);
+    border-radius:4px;
+    background:var(--gb-ink);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.shot-main img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+}
 
-        /* Кастомный скроллбар */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+.thumbs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.6rem;
+    margin-top:.85rem;
+}
 
-        ::-webkit-scrollbar-track {
-            background: #0a0a0f;
-        }
+.thumb{
+    width:76px;
+    height:58px;
+    padding:0;
+    border:3px solid var(--gb-ink);
+    border-radius:4px;
+    overflow:hidden;
+    background:var(--gb-ink);
+    cursor:pointer;
+    opacity:.55;
+    transition:opacity .2s, transform .2s, box-shadow .2s;
+}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.thumb:hover{opacity:1;transform:translateY(-2px);}
+.thumb.active{opacity:1;box-shadow:0 0 0 2px #eaf5b0;}
 
-        ::-webkit-scrollbar-thumb {
-            background: #3a2a50;
-            border-radius: 10px;
-        }
+.modal-body{margin-top:1.5rem;color:#2b2b20;}
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #5a3a70;
-        }
+.modal-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:1rem;
+    flex-wrap:wrap;
+}
 
-        /* Анимация появления */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.modal-title{
+    font-family:'Press Start 2P',monospace;
+    font-size:clamp(.8rem,2.1vw,1.1rem);
+    line-height:1.7;
+    color:#2f3a10;
+    text-shadow:0 2px 0 rgba(255,255,255,.55);
+}
 
-        .game {
-            animation: fadeInUp 0.6s ease forwards;
-        }
+.modal-index{
+    font-family:'Press Start 2P',monospace;
+    font-size:.55rem;
+    color:#6b6957;
+    padding-top:.4rem;
+}
 
-        .game:nth-child(1) { animation-delay: 0.1s; }
-        .game:nth-child(2) { animation-delay: 0.2s; }
-        .game:nth-child(3) { animation-delay: 0.3s; }
-        .game:nth-child(4) { animation-delay: 0.4s; }
-        .game:nth-child(5) { animation-delay: 0.5s; }
-    </style>
+.modal-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.6rem;
+    margin-top:.9rem;
+}
+
+.tag{
+    font-family:'Press Start 2P',monospace;
+    font-size:.4rem;
+    letter-spacing:.5px;
+    padding:.6em 1em;
+    border-radius:999px;
+    background:var(--gb-ink);
+    color:#c9e04a;
+}
+
+.modal-desc{
+    margin-top:1rem;
+    font-size:1.3rem;
+    line-height:1.55;
+    color:#3a3a2c;
+}
+
+.modal-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.9rem;
+    margin-top:1.5rem;
+}
+
+.btn{
+    font-family:'Press Start 2P',monospace;
+    font-size:.5rem;
+    letter-spacing:.5px;
+    text-decoration:none;
+    color:#ffe6f0;
+    background:linear-gradient(var(--gb-btn-1),var(--gb-btn-2));
+    padding:1em 1.4em;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    gap:.7em;
+    box-shadow:0 5px 0 var(--gb-btn-shadow), 0 9px 16px rgba(0,0,0,.35);
+    transition:transform .12s, box-shadow .12s, filter .2s;
+}
+.btn:hover{filter:brightness(1.13);}
+.btn:active{transform:translateY(5px);box-shadow:0 0 0 var(--gb-btn-shadow);}
+
+.btn--soon{
+    background:linear-gradient(#9d9b84,#7d7b66);
+    color:#eae8d3;
+    box-shadow:0 5px 0 #57553f;
+    cursor:default;
+}
+.btn--soon:hover{filter:none;}
+
+/* ---------- АДАПТИВ ---------- */
+@media (max-width:900px){
+    .gb-speaker{display:none;}
+}
+
+@media (max-width:768px){
+    .topbar{padding:.8rem 1rem;justify-content:center;text-align:center;}
+    .gb-dpad{display:none;}
+    .gb-buttons{display:none;}
+    h1{letter-spacing:1px;}
+    main{padding:2.2rem 1.1rem 4rem;}
+    .screen{min-height:200px;}
+    .shot-main{aspect-ratio:4 / 3;}
+}
+
+@media (max-width:520px){
+    .topbar{padding:.7rem .8rem;gap:.6rem;}
+    .logo{padding:.3rem .7rem .3rem .3rem;}
+    .logo img{height:34px;}
+    .top-btn{font-size:.42rem;padding:.85em 1.1em;}
+    .cart-grid{grid-template-columns:repeat(auto-fill, minmax(145px,1fr));gap:1.8rem 1rem;}
+    .cart{padding:22px 10px 10px;}
+    .cart-label-title{font-size:.4rem;padding:22px 5px 6px;}
+    .cart-foot{font-size:.33rem;}
+    .modal{padding:1.2rem 1rem 1.4rem;border-radius:14px 14px 50px 14px;}
+    .screen-bezel{padding:12px 12px 24px;}
+    .modal-desc{font-size:1.15rem;}
+    .thumb{width:60px;height:46px;}
+}
+
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:#14130f;}
+::-webkit-scrollbar-thumb{background:#3c3b2c;border-radius:10px;}
+::-webkit-scrollbar-thumb:hover{background:#5a5842;}
+</style>
 </head>
 <body>
-    <div class="bg-overlay"></div>
-    <div class="bg-lines"></div>
 
-    <header>
-        <div id="logo">
-            <img src="img/radiant/radiant.png" alt="Radiant games">
+<!-- ХЕДЕР -->
+<header class="topbar">
+    <div class="logo">
+        <img src="img/radiant/radiant.png" alt="Radiant Games">
+    </div>
+
+    <div class="topbar-right">
+        <!-- мини D-Pad -->
+        <div class="gb-dpad" aria-hidden="true">
+            <span class="up"></span>
+            <span class="down"></span>
+            <span class="left"></span>
+            <span class="right"></span>
+            <span class="mid"></span>
         </div>
+
+        <!-- динамик -->
+        <div class="gb-speaker" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+
+        <!-- кнопки A / B -->
+        <div class="gb-buttons" aria-hidden="true">
+            <span class="gb-btn b">B</span>
+            <span class="gb-btn a">A</span>
+        </div>
+
         <nav>
-            <a href="https://t.me/evgeeeesha27" target="_blank" rel="noopener">
+            <a class="top-btn" id="tgLink" href="https://t.me/evgeeeesha27" target="_blank" rel="noopener">
                 <i class="fab fa-telegram-plane"></i> Telegram
             </a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <section id="content">
-        <h1>Наши проекты</h1>
-        <p class="subtitle">✦ игры и приложения ✦</p>
+<!-- КОНТЕНТ -->
+<main>
+    <h1>НАШИ ПРОЕКТЫ</h1>
+    <p class="subtitle">✦ выбери картридж ✦</p>
 
-        <div class="projects-grid">
-			<!-- FlappyPelm -->
-            <article class="game">
-                <img class="game-preview" src="img/radiant/projects/flappy_pelmen.png" alt="Flappy Pelmen">
-                <div class="game-info">
-                    <h2>Flappy Pelmen</h2>
-                    <p>Клон Flappy bird в котором вы играете за отважный пельмень :)</p>
-                    <div class="download-links">
-                        <a class="download-link" href="bin/FlappyPelmenWIn.zip">
-                            <i class="fab fa-windows"></i> Windows (.exe)
-                        </a>
-						<a class="download-link" href="bin/FlappyPelmen.apk">
-                            <i class="fab fa-windows"></i> Android (.apk)
-                        </a>
-                    </div>
-                </div>
-            </article>
-            <!-- Pelmenys` secret -->
-            <article class="game">
-                <img class="game-preview" src="img/radiant/projects/pelmen.png" alt="Pelmenys secret">
-                <div class="game-info">
-                    <h2>Pelmenys` secret</h2>
-                    <p>Секрет пельменей» — увлекательная игра, в которой вам предстоит узнать, в чём же секрет самых вкусных в мире пельменей? Таинственное приключение с неожиданными поворотами и загадками ждёт вас!</p>
-                    <div class="download-links">
-                        <a class="download-link" href="">
-                            <i class="fab fa-windows"></i> Скоро)
-                        </a>
-                    </div>
-                </div>
-            </article>
+    <div class="cart-grid" id="grid"></div>
+</main>
 
-            <!-- PassKeeper -->
-            <article class="game">
-                <img class="game-preview" src="img/radiant/projects/passkeeper.png" alt="PassKeeper">
-                <div class="game-info">
-                    <h2>PassKeeper</h2>
-                    <p>Надёжное хранилище всех ваших паролей в одном месте. Данные хранятся в зашифрованном виде, обеспечивая максимальную безопасность. Удобный и минималистичный интерфейс.</p>
-                    <div class="download-links">
-                        <a class="download-link" href="bin/passkeeper.apk">
-                            <i class="fab fa-android"></i> Android (.apk)
-                        </a>
-                    </div>
-                </div>
-            </article>
+<!-- МОДАЛКА -->
+<div class="overlay" id="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+        <button class="close" id="closeBtn" aria-label="Закрыть"><i class="fas fa-times"></i></button>
 
-            <!-- Racing -->
-            <article class="game">
-                <img class="game-preview" src="img/radiant/projects/Racing.png" alt="Racing">
-                <div class="game-info">
-                    <h2>Racing</h2>
-                    <p>Прокатитесь на легендарной Toyota AE86 по живописным трассам. Поддержка клавиатуры с мышью и геймпада. WASD — движение, мышь — камера, R — восстановление. Геймпад: стики, триггеры газа/тормоза.</p>
-                    <div class="download-links">
-                        <a class="download-link" href="bin/racing.zip">
-                            <i class="fab fa-windows"></i> Windows (.exe)
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Flappy Burger -->
-            <article class="game">
-                <img class="game-preview" src="img/radiant/projects/FlappyBurger.png" alt="Flappy Burger" style="height: 200px; width: auto;">
-                <div class="game-info">
-                    <h2>Flappy Burger</h2>
-                    <p>Управляйте бургером в жестокой вселенной вилок и ножей! Уклоняйтесь от столовых приборов и устанавливайте новые рекорды в этой динамичной аркаде. Безумное приключение летающего бургера!</p>
-                    <div class="download-links">
-                        <a class="download-link" href="bin/FlappyBurger.apk">
-                            <i class="fab fa-android"></i> Android (.apk)
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- RPlatformer -->
-            <article class="game">
-                <img class="game-preview" src="img/radiant/projects/RPlatformer.png" alt="RPlatformer">
-                <div class="game-info">
-                    <h2>RPlatformer</h2>
-                    <p>Уникальный платформер с отважным кубиком! Преодолевайте сложные лабиринты из платформ, меняйте цвет и форму персонажа. Испытайте свою ловкость в этом захватывающем приключении.</p>
-                    <div class="download-links">
-                        <a class="download-link" href="bin/RPlatformer.zip">
-                            <i class="fab fa-windows"></i> Windows (.exe)
-                        </a>
-                        <a class="download-link" href="bin/RPlatformer.apk">
-                            <i class="fab fa-android"></i> Android (.apk)
-                        </a>
-                    </div>
-                </div>
-            </article>
+        <div class="screen-bezel">
+            <div class="screen" id="screen">
+                <div class="shot-main" id="shotMain"></div>
+                <div class="thumbs" id="thumbs"></div>
+            </div>
+            <div class="bezel-text">DOT MATRIX WITH STEREO SOUND</div>
         </div>
-    </section>
+
+        <div class="modal-body">
+            <div class="modal-head">
+                <h2 class="modal-title" id="mTitle"></h2>
+                <span class="modal-index" id="mIndex"></span>
+            </div>
+
+            <div class="modal-tags" id="mTags"></div>
+
+            <p class="modal-desc" id="mDesc"></p>
+
+            <div class="modal-links" id="mLinks"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+/* ============================================================
+   Данные берутся из games.json (лежит рядом с index.html)
+   ============================================================ */
+
+const gridEl  = document.getElementById('grid');
+const overlay = document.getElementById('overlay');
+
+const els = {
+    screen : document.getElementById('screen'),
+    shot   : document.getElementById('shotMain'),
+    thumbs : document.getElementById('thumbs'),
+    title  : document.getElementById('mTitle'),
+    index  : document.getElementById('mIndex'),
+    tags   : document.getElementById('mTags'),
+    desc   : document.getElementById('mDesc'),
+    links  : document.getElementById('mLinks')
+};
+
+let GAMES = [];
+
+const PLATFORM_ICONS = {
+    windows : 'fab fa-windows',
+    android : 'fab fa-android',
+    ios     : 'fab fa-apple',
+    mac     : 'fab fa-apple',
+    linux   : 'fab fa-linux',
+    web     : 'fas fa-globe'
+};
+
+const PLATFORM_NAMES = {
+    windows : 'Windows',
+    android : 'Android',
+    ios     : 'iOS',
+    mac     : 'macOS',
+    linux   : 'Linux',
+    web     : 'Web'
+};
+
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[c]));
+
+/* ---------- Отрисовка картриджей ---------- */
+function renderCarts(games){
+    if(!games.length){
+        gridEl.innerHTML = '<div class="load-error"><p>В games.json пока нет ни одной игры.</p></div>';
+        return;
+    }
+
+    gridEl.innerHTML = games.map((g, i) => {
+        const cover = (g.images && g.images[0]) ? g.images[0] : '';
+        return `
+        <article class="cart" data-id="${esc(g.id)}" tabindex="0" role="button"
+                 aria-label="Открыть ${esc(g.title)}" style="animation-delay:${i * 70}ms">
+            <div class="cart-label">
+                ${cover ? `<img src="${esc(cover)}" alt="${esc(g.title)}" loading="lazy">` : ''}
+                <span class="cart-label-title">${esc(g.title)}</span>
+            </div>
+            <div class="cart-foot">
+                <span>GAME BOY™</span>
+                <span>№${String(i + 1).padStart(2, '0')}</span>
+            </div>
+        </article>`;
+    }).join('');
+}
+
+/* ---------- Модалка ---------- */
+function openGame(id){
+    const idx = GAMES.findIndex(g => g.id === id);
+    if(idx < 0) return;
+
+    const g = GAMES[idx];
+    const images = (g.images && g.images.length) ? g.images : [''];
+
+    els.index.textContent = '№' + String(idx + 1).padStart(2, '0');
+    els.title.textContent = g.title;
+    els.desc.textContent  = g.description || '';
+
+    const tags = [];
+    if(g.genre) tags.push(g.genre);
+    const platforms = [...new Set((g.downloads || []).map(d => d.platform).filter(Boolean))];
+    platforms.forEach(p => tags.push(PLATFORM_NAMES[p] || p));
+    els.tags.innerHTML = tags.map(t => `<span class="tag">${esc(t)}</span>`).join('');
+
+    els.shot.innerHTML = `<img src="${esc(images[0])}" alt="">`;
+
+    if(images.length > 1){
+        els.thumbs.style.display = 'flex';
+        els.thumbs.innerHTML = images.map((src, i) => `
+            <button class="thumb${i === 0 ? ' active' : ''}" data-src="${esc(src)}"
+                    aria-label="Скриншот ${i + 1}">
+                <img src="${esc(src)}" alt="">
+            </button>`).join('');
+    } else {
+        els.thumbs.style.display = 'none';
+        els.thumbs.innerHTML = '';
+    }
+
+    els.links.innerHTML = (g.downloads || []).map(d => {
+        const icon = PLATFORM_ICONS[d.platform] || 'fas fa-download';
+        if(!d.url){
+            return `<span class="btn btn--soon"><i class="fas fa-hourglass-half"></i> ${esc(d.label)}</span>`;
+        }
+        return `<a class="btn" href="${esc(d.url)}" target="_blank" rel="noopener">
+                    <i class="${icon}"></i> ${esc(d.label)}
+                </a>`;
+    }).join('');
+
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    els.screen.classList.remove('boot');
+    void els.screen.offsetWidth;
+    els.screen.classList.add('boot');
+
+    document.getElementById('closeBtn').focus();
+}
+
+function closeModal(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+/* ---------- События ---------- */
+gridEl.addEventListener('click', e => {
+    const cart = e.target.closest('.cart');
+    if(cart) openGame(cart.dataset.id);
+});
+
+gridEl.addEventListener('keydown', e => {
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    const cart = e.target.closest('.cart');
+    if(cart){ e.preventDefault(); openGame(cart.dataset.id); }
+});
+
+els.thumbs.addEventListener('click', e => {
+    const btn = e.target.closest('.thumb');
+    if(!btn) return;
+    els.thumbs.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    els.shot.innerHTML = `<img src="${esc(btn.dataset.src)}" alt="">`;
+});
+
+document.getElementById('closeBtn').addEventListener('click', closeModal);
+
+overlay.addEventListener('click', e => {
+    if(e.target === overlay) closeModal();
+});
+
+document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+});
+
+/* ---------- Загрузка данных ---------- */
+(async function init(){
+    try{
+        const res = await fetch('games.json', { cache: 'no-store' });
+        if(!res.ok) throw new Error('HTTP ' + res.status);
+
+        const data = await res.json();
+        GAMES = data.games || [];
+
+        renderCarts(GAMES);
+
+        if(data.telegram) document.getElementById('tgLink').href = data.telegram;
+        if(data.studio)   document.title = data.studio + ' | Portfolio';
+
+    }catch(err){
+        gridEl.innerHTML = `
+            <div class="load-error">
+                <p>⚠ Не удалось загрузить <b>games.json</b></p>
+                <p>Браузер блокирует чтение локальных файлов через <b>file://</b>.
+                   Запустите локальный сервер в папке сайта:</p>
+                <code>python -m http.server 8000</code>
+                <p>и откройте <b>http://localhost:8000</b></p>
+            </div>`;
+        console.error(err);
+    }
+})();
+</script>
 </body>
 </html>

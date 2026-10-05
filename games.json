@@ -1,0 +1,126 @@
+{
+  "studio": "Radiant Games",
+  "telegram": "https://t.me/evgeeeesha27",
+  "games": [
+    {
+      "id": "flappy-pelmen",
+      "title": "Flappy Pelmen",
+      "description": "Клон Flappy bird в котором вы играете за отважный пельмень :)",
+      "images": [
+        "img/radiant/projects/flappy_pelmen.png"
+      ],
+      "downloads": [
+        {
+          "label": "Windows (.exe)",
+          "url": "bin/FlappyPelmenWIn.zip",
+          "platform": "windows"
+        },
+        {
+          "label": "Android (.apk)",
+          "url": "bin/FlappyPelmen.apk",
+          "platform": "android"
+        }
+      ]
+    },
+    {
+      "id": "pelmenys-secret",
+      "title": "Pelmenys` secret",
+      "description": "Секрет пельменей» — увлекательная игра, в которой вам предстоит узнать, в чём же секрет самых вкусных в мире пельменей? Таинственное приключение с неожиданными поворотами и загадками ждёт вас!",
+      "images": [
+        "img/radiant/projects/pelmen.png"
+      ],
+      "downloads": [
+        {
+          "label": "Скоро)",
+          "url": "",
+          "platform": "windows"
+        }
+      ]
+    },
+    {
+      "id": "passkeeper",
+      "title": "PassKeeper",
+      "description": "Надёжное хранилище всех ваших паролей в одном месте. Данные хранятся в зашифрованном виде, обеспечивая максимальную безопасность. Удобный и минималистичный интерфейс.",
+      "images": [
+        "img/radiant/projects/passkeeper.png"
+      ],
+      "downloads": [
+        {
+          "label": "Android (.apk)",
+          "url": "bin/passkeeper.apk",
+          "platform": "android"
+        }
+      ]
+    },
+    {
+      "id": "rcards",
+      "title": "RCards",
+      "description": "Приложение с функционалом карточек для изучения языков и всего что только вздумается. Сейчас добавлен в основном латинский и немного английского. В самом приложении вы можете создавать свои языковые наборы и редактировать их как угодно. Так же вы можете мне написать в Telegram для запроса на добавление нового языкового набора.",
+      "images": [
+        "img/radiant/projects/rcards.png"
+      ],
+      "downloads": [
+        {
+          "label": "Android (.apk)",
+          "url": "bin/RCards.apk",
+          "platform": "android"
+        },
+        {
+            "label": "Web (site)",
+            "url": "https://radiant-photos.ru/quiz_cards/",
+            "platform": "web"
+        }
+      ]
+    },
+    {
+      "id": "racing",
+      "title": "Racing",
+      "description": "Прокатитесь на легендарной Toyota AE86 по живописным трассам. Поддержка клавиатуры с мышью и геймпада. WASD — движение, мышь — камера, R — восстановление. Геймпад: стики, триггеры газа/тормоза.",
+      "images": [
+        "img/radiant/projects/Racing.png"
+      ],
+      "downloads": [
+        {
+          "label": "Windows (.exe)",
+          "url": "bin/racing.zip",
+          "platform": "windows"
+        }
+      ]
+    },
+    {
+      "id": "flappy-burger",
+      "title": "Flappy Burger",
+      "description": "Управляйте бургером в жестокой вселенной вилок и ножей! Уклоняйтесь от столовых приборов и устанавливайте новые рекорды в этой динамичной аркаде. Безумное приключение летающего бургера!",
+      "images": [
+        "img/radiant/projects/FlappyBurger.png"
+      ],
+      "downloads": [
+        {
+          "label": "Android (.apk)",
+          "url": "bin/FlappyBurger.apk",
+          "platform": "android"
+        }
+      ]
+    },
+    {
+      "id": "rplatformer",
+      "title": "RPlatformer",
+      "description": "Уникальный платформер с отважным кубиком! Преодолевайте сложные лабиринты из платформ, меняйте цвет и форму персонажа. Испытайте свою ловкость в этом захватывающем приключении.",
+      "images": [
+        "img/radiant/projects/RPlatformer.png"
+      ],
+      "downloads": [
+        {
+          "label": "Windows (.exe)",
+          "url": "bin/RPlatformer.zip",
+          "platform": "windows"
+        },
+        {
+          "label": "Android (.apk)",
+          "url": "bin/RPlatformer.apk",
+          "platform": "android"
+        }
+      ]
+    }
+  ]
+}
